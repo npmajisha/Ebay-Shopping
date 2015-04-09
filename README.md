@@ -16,3 +16,6 @@ Bootstrap framework has been extensively used to add responsiveness to the web a
 The web application provides support to post the search result to Facebook. This is implemented using
 the FB.UI feed dialog API.
 
+Unzip the following zip files to extract the bootstrap and jquery libraries:
+bootstrap-3.3.4-dist.zip
+jquery-validation-1.13.1.zip
