@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EbayShopping</title>
+
+    <!-- Referencing Bootstrap CSS that is hosted locally -->
+  <link rel="stylesheet" href = "css/bootstrap.min.css">
+  <link rel="stylesheet" href = "main.css">
+  <script src="lib/jquery-1.11.1.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src = "dist/jquery.validate.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>   
+  <script src="my_index.js"></script>
+
+  </head>
+  
+  
+  <body>
+      
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '910131625675798',
+      xfbml      : true,
+      version    : 'v2.3'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+      
+      
+   <div class="container">
+       
+       <div class="row">
+          
+           <div class="col-xs-12 col-md-12 col-sm-offset-2 col-sm-8">
+               <img id = "header_img" src = "http://cs-server.usc.edu:45678/hw/hw8/ebay.jpg" class = "img-responsive"> <h1>Shopping</h1>
+           </div>
+     
+       </div>
+       
+       <form id="query_parameters" class="form-horizontal">
+            <div class="row">
+                
+                    <label for="key_words" class="control_label col-md-2 col-sm-3 col-xs-12">Key words:<span style="color:red;"> *</span></label>
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <input type="text" class="form-control" name="key_words" id="key_words" placeholder="Enter Keyword">
+                    </div>
+           
+           </div>
+           
+           <div class="row">
+                
+                    <label  class="control_label col-md-2 col-sm-3 col-xs-12">Price range:</label>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                          <input type="text" class="form-control" placeholder="from($)" name = "low_price_range" id="low_price_range">
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <input type="text" class="form-control" placeholder="to($)" name="high_price_range" id="high_price_range">
+                    </div>
+           
+           </div>
+           
+           <div class="row">
+                    <label  class="control_label col-md-2 col-sm-3 col-xs-12">Condition:</label>
+                    <div class="col-md-10 col-sm-8 col-xs-12" id = "condition">
+                        <label class="checkbox-inline"><input type="checkbox" name="condition[]" value="condition_new">New</label>
+  
+                        <label class="checkbox-inline"><input type="checkbox" name="condition[]" value="condition_used">Used</label>
+  
+    
+                        <label class="checkbox-inline"><input type="checkbox" name="condition[]" value="condition_verygood">Very Good</label>
+         
+    
+                        <label class="checkbox-inline"><input type="checkbox" name="condition[]" value="condition_good">Good</label>
+          
+                        <label id="acceptable" class="checkbox-inline"><input type="checkbox" name="condition[]" value="condition_acceptable">Acceptable</label>
+                    </div>
+           </div>
+           
+           <div class="row">
+                    <label  class="control_label col-md-2 col-sm-3 col-xs-12">Buying formats:</label>
+                    <div class="col-md-6 col-sm-9 col-xs-12" id="buying_format">
+                          <label class="checkbox-inline"><input type="checkbox" name="buying_formats[]" value="FixedPrice">Buy It Now</label>
+                   
+                          <label class="checkbox-inline"><input type="checkbox" name="buying_formats[]" value="Auction">Auction</label>
+                    
+                          <label class="checkbox-inline"><input type="checkbox" name="buying_formats[]" value="Classified">Classified Ads</label>
+                    </div>                   
+           
+           </div>
+           <div class="row">
+                    <label  class="control_label col-md-2 col-sm-3 col-xs-12">Seller:</label>
+                    <div class="col-md-10 col-sm-8 col-xs-12" id="return_accepted">
+                          <label class="checkbox-inline"><input type="checkbox" name="return_accepted" value="true">Return Accepted</label>
+                    </div>                   
+           
+           </div>
+           
+           <div class="row">
+                    <label  class="control_label col-md-2 col-sm-3 col-xs-12">Shipping:</label>
+                    <div class="col-md-6 col-sm-8 col-xs-12" id="shipping">
+                          <label class="checkbox-inline"><input type="checkbox" name="free_shipping" value="free">Free Shipping</label>
+                   
+                          <label class="checkbox-inline"><input type="checkbox" name="expedited_shipping" value="expedited">Expedited Shipping</label>
+
+                    </div>                   
+           
+           </div>
+           
+           <div class="row">
+                
+
+                    <div class="col-md-offset-2 col-md-8 col-sm-offset-3 col-sm-8 col-xs-12">
+                        <input type="text" class="form-control" id="max_handling_time" name="max_handling_time" placeholder="Max handling time(days)">
+                    </div>
+           
+           </div>
+           
+           <div class="row">
+                
+                    <label  class="control_label col-md-2 col-sm-3 col-xs-12">Sort by:</label>
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <select class="form-control" id="sort_by" name="sort_by">
+                        <option value="BestMatch">Best Match</option>
+                        <option value="CurrentPriceHighest">Price:highest first</option>
+                        <option value="PricePlusShippingHighest">Price+Shipping:highest first</option>
+                        <option value="PricePlusShippingLowest">Price+Shipping:lowest first</option>
+                        </select>
+                    </div>
+           
+           </div>
+           
+           <div class="row">
+                
+                    <label  class="control_label col-md-2 col-sm-3 col-xs-12">Results per page:</label>
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <select class="form-control" id="results_per_page" name="results_per_page">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        </select>
+                    </div>
+           
+           </div>
+           <div class="row">
+                <button id="clear" class="btn col-md-offset-8 col-md-1 col-sm-offset-8 col-sm-1 col-xs-3"type="button" >Clear</button>
+                <button id="submit" name="submit" class="btn btn-primary col-md-1 col-sm-1 col-xs-3" type="submit">Search</button>
+           </div>
+       </form>
+       <div class="row" id="result_section">
+           
+           
+           
+           
+      
+       
+       </div>
+       
+        <div id="imgModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="imgModalHeading" aria-hidden="true">
+         <div class="modal-dialog">
+    
+            <div class="modal-content">
+                
+                 <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="imgModalHeading"></h4>
+                </div>
+                <div class="modal-body">
+                    <img id="imgSuperSize" src="#" class="img-responsive img-center">
+                </div>
+            </div>
+        </div>
+       </div>
+       <div class="row">
+       <div class="hide col-md-12 col-xs-12 col-sm-12 text-center" id="pagination_bar">
+       <ul class="pagination" id="pagination">
+        
+
+      </ul>
+       
+       </div>
+        </div>
+   </div>
+  </body>
+  </html>
